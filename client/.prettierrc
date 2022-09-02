@@ -1,0 +1,25 @@
+{
+	"trailingComma": "none",
+	"tabWidth": 2,
+	"useTabs": true,
+	"semi": false,
+	"singleQuote": true,
+	"importOrder": [
+		"<THIRD_PARTY_MODULES>",
+		"^@/components/(.*)$",
+		"^@/interfaces/(.*)$",
+		"^@/screens/(.*)$",
+		"^@/ui/(.*)$",
+		"^@/hooks/(.*)$",
+		"^@/shared/(.*)$",
+		"^@/services/(.*)$",
+		"^@/assets/(.*)$",
+		"^@/utils/(.*)$",
+		"^@/config/(.*)$",
+		"^../(.*)",
+		"^./(.*)",
+		"^(.sass*)"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
+}

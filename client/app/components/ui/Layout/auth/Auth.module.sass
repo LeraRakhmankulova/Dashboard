@@ -1,0 +1,27 @@
+.wrapper
+    @apply relative inline-flex px-5 py-2
+
+    .form
+        @apply p-4 absolute right-2 w-60 pt-10
+        top: calc(100% + 0.5em )
+        border-radius: 8px
+        border-top: 3px solid #fff
+        border-left: 4px solid #fff
+        background: #fefefef0
+        box-shadow: 0px 3px 6px rgba(81, 0, 255, 0.114)
+        
+
+        .register
+            @apply opacity-40 block text-center w-full
+            font-size: 0.7em
+            
+    .button
+        @apply px-1 pt-1 cursor-pointer
+        box-shadow: 0 3px 6px rgba(81, 0, 255, 0.1)
+        border-radius: 100%
+        background: white
+        transition: .4s
+        &:hover
+            transition: .4s
+            box-shadow: 0 6px 10px rgba(81, 0, 255, 0.16)
+            
