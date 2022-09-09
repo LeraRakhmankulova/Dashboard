@@ -1,3 +1,4 @@
+import { useMutation } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import React, { FC, useState } from 'react'
@@ -7,6 +8,8 @@ import { IAuthFields } from '@/interfaces/IAuthFields.interface'
 
 import { useAuth } from '@/hooks/useAuth'
 import { useOutside } from '@/hooks/useOutside'
+
+import { AuthService } from '@/services/auth/auth.service'
 
 import { menuAnimation } from '@/utils/animation/fade'
 
@@ -25,37 +28,62 @@ const AuthForm: FC = () => {
 	const {
 		register,
 		formState: { errors },
-		handleSubmit, reset 
+		handleSubmit,
+		reset
 	} = useForm<IAuthFields>({
 		mode: 'onChange'
 	})
 
 	const { user, setUser } = useAuth()
 
+	const { mutate: loginSync } = useMutation(
+		['login'],
+		(data: IAuthFields) => AuthService.login(data.email, data.password),
+		{
+			onSuccess(data) {
+				if (setUser) setUser(data.user)
+				reset()
+				setIsShow(false)
+			}
+		}
+	)
+
+	const { mutate: registerSync } = useMutation(
+		['register'],
+		(data: IAuthFields) => AuthService.register(data.email, data.password),
+		{
+			onSuccess(data) {
+				if (setUser) setUser(data.user)
+				reset()
+				setIsShow(false)
+			}
+		}
+	)
+
 	const onSubmit: SubmitHandler<IAuthFields> = (data) => {
-		if (type === 'login')
-			setUser({
-				id: 1,
-				name: 'ivan ivanovich',
-				email: 'test@mail.ru',
-				avatarPath: '/avatar.jpg'
-			})
-			reset()
-			setIsShow(false)
+		if (type === 'login') loginSync(data)
+		else if (type === 'register') registerSync(data)
 	}
 
 	return (
 		<div className={style.wrapper} ref={ref}>
 			{user ? (
-				<UserAvatar title="Перейти на доску"
-				link="/dashboard" avatarPath={user.avatarPath || ''} />
+				<UserAvatar
+					title="Перейти на доску"
+					link="/dashboard"
+					avatarPath={user.avatarPath || ''}
+				/>
 			) : (
 				<button className={style.button} onClick={() => setIsShow(!isShow)}>
 					<Image src={userIcon} width={25} height={25} />
 				</button>
 			)}
 
-			<motion.div  transition={{ duration: 1 }} animate={isShow? 'open' : 'closed'} variants={menuAnimation}>
+			<motion.div
+				transition={{ duration: 1 }}
+				animate={isShow ? 'open' : 'closed'}
+				variants={menuAnimation}
+			>
 				<form className={style.form} onSubmit={handleSubmit(onSubmit)}>
 					<Field
 						{...register('email', {
@@ -85,7 +113,8 @@ const AuthForm: FC = () => {
 					</div>
 					<button
 						className={style.register}
-						onClick={() => setType('register')}>
+						onClick={() => setType('register')}
+					>
 						Register
 					</button>
 				</form>
