@@ -71,7 +71,8 @@ const AuthForm: FC = () => {
 				<UserAvatar
 					title="Перейти на доску"
 					link="/dashboard"
-					avatarPath={user.avatarPath || ''}
+					// avatarPath={user.avatarPath}
+					avatarPath='/avatar.jpg'
 				/>
 			) : (
 				<button className={style.button} onClick={() => setIsShow(!isShow)}>

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { fn, Op } from 'sequelize/types';
+import { fn, Op } from 'sequelize';
 import * as dayjs from 'dayjs';
 import { ViewsModel } from './views.model';
 

@@ -39,7 +39,7 @@ export class UserService {
 
         return {
             user: this.returnUserFields(user),
-            acessToken: await this.issueAccessToken(user.id)
+            acessToken: await this.issueAccessToken(String(user.id))
         }
     }
 
@@ -70,5 +70,4 @@ export class UserService {
             name: user.name
         }
     }
-
 }
