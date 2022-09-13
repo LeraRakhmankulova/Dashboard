@@ -3,7 +3,7 @@ import axios, { axiosClassic } from "api/interceptor"
 
 
 export const MovieService = {
-    async getMovieById(id: string){
+    async getMovieById(id: number){
         return axiosClassic.get<IMovie>(`/movie/${id}`)
     },
 
@@ -19,11 +19,11 @@ export const MovieService = {
         return axios.post<string>('/movie')
     },
 
-    async updateMovie(id: string, body: IMovieDto){
+    async updateMovie(id: number, body: IMovieDto){
         return axios.put<IMovie>(`/movie/${id}`, body)
     },
 
-    async deleteMovie(id: string){
+    async deleteMovie(id: number){
         return axios.delete(`/movie/${id}`)
     }
 }
