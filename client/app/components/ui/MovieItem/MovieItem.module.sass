@@ -1,6 +1,20 @@
 .movie
-    padding: 0.5em
-    background: blue
+    @apply px-2 pt-4 mx-2
+    transition: .2s
+    border-radius: 10px
+    background: rgba(247, 244, 255, 0.365)
+    // box-shadow: 12px 14px 8px 0px rgba(255, 0, 187, 0.18)
+    box-shadow: 12px 14px 8px rgba(81, 0, 255, 0.114)
+    &__rating
+        @apply absolute -ml-1.5 -mt-1 px-2 z-10 bg-green-600 text-white
+        p-1 text-center
+        border-radius: 3px
+        box-shadow: 6px 8px 8px 0px rgba(0, 122, 26, 0.18)
+    &__poster
+        @apply overflow-hidden
+        border-radius: 5px
     &__heading
-        background: red
-        text-align: center
+        @apply text-black mt-0.5 pb-2 font-medium text-lg text-center
+    &:hover
+        transform: translateY(-0.2em)
+        transition: .4s

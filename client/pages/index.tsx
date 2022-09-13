@@ -13,7 +13,7 @@ const HomePage: NextPage<IHome> = (props) => {
 		{
 		  id: 1,
 		  name: 'Леди берд',
-		  rating: '10',
+		  rating: '2.5',
 		  poster: '/poster1.jpg',
 		  views: 392746634,
 		  fees: 1090240

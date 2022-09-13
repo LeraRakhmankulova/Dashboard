@@ -11,7 +11,7 @@ const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 		<Link href={`/movie/${movie.id}`}>
 			<a title={movie.name}>
 				<div className={style.movie}>
-					{movie.rating && <div className={style.rating}> {movie.rating}</div>}
+					{movie.rating && <div className={style.movie__rating}> {movie.rating}</div>}
 					<div className={style.movie__poster}>
 						<Image
 							src={movie.poster}
