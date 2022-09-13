@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
-import Home from '@/components/sreens/Home'
+import Home from '@/components/sreens/home/Home'
 
 import { IHome } from '@/interfaces/IHome.interface'
 
