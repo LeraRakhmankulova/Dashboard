@@ -11,11 +11,11 @@ import { JwtStrategy } from './strategies/auth.strategy';
 @Module({
   imports: [SequelizeModule.forFeature([UserModel]),
     ConfigModule,
-  JwtModule.registerAsync({
-    imports: [ConfigModule],
-    inject: [ConfigService],
-    useFactory: getJWTConfig
-  })],
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: getJWTConfig
+    })],
   controllers: [UserController],
   providers: [UserService, JwtStrategy]
 })
