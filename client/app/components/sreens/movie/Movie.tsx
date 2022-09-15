@@ -9,6 +9,7 @@ import { IMovie } from '@/interfaces/IMovie.interface'
 import { MovieService } from '@/services/movie.service'
 
 import style from './Movie.module.sass'
+import Reviews from '../reviews/Reviews'
 
 const Movie = () => {
 	const { query } = useRouter()
@@ -23,7 +24,7 @@ const Movie = () => {
 
 	const movieId = Number(query?.id)
 
-	const { refetch, data: movie } = useQuery(
+	const { refetch, data: movie, isLoading } = useQuery( 
 		['get movie', query?.id],
 		() => MovieService.getMovieById(movieId),
 		{
@@ -41,17 +42,23 @@ const Movie = () => {
 						height={405}
 					/>
 				</div>
-                <div className={style.movie_page__info}>
+				<div className={style.movie_page__info}>
 					<h1>{movieMock.name}</h1>
-                    <h3>{movieMock.rating}</h3>
-                    <h2>About movie:</h2>
-                    <ul>
-                    
-                        <li>{movieMock.fees}</li>
-                        <li>{movieMock.views}</li>
-                    </ul>
+					<h3>{movieMock?.rating}</h3>
+					<h2>About movie:</h2>
+					<ul>
+						<li>
+							<span>Fees: </span>
+							<span>$ {movieMock?.fees}</span>
+						</li>
+						<li>
+							<span>Views: </span>
+							<span>{movieMock?.views}</span>
+						</li>
+					</ul>
 				</div>
 			</div>
+            <Reviews movieId={movieMock.id} reviews={movieMock?.reviews || []} isLoading={isLoading}/>
 		</Layout>
 	)
 }

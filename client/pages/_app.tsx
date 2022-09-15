@@ -4,7 +4,7 @@ import AuthProvider from 'providers/auth/AuthProvider'
 
 import '../app/assets/styles/globals.sass'
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
 	defaultOptions:{
 		queries:{
 			refetchOnWindowFocus: false //выключила обновление страницы при переходе на новую вкладку
