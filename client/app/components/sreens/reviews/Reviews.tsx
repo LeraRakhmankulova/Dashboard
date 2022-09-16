@@ -12,10 +12,11 @@ const Reviews: FC<IComment> = ({ movieId, reviews, isLoading }) => {
 	const { user } = useAuth()
 	return (
 		<div className={style.reviews}>
-			<div>
+			{/* <div>
 				{user && <ReviewForm movieId={movieId} reviews={reviews} />}
 				{isLoading ? (
-					<Loader count={5} />
+					// <Loader count={5} />
+					<div>loading here</div>
 				) : reviews?.length ? (
 					<div className={style.reviews__item}>
 						{reviews.map(rev => (
@@ -25,6 +26,14 @@ const Reviews: FC<IComment> = ({ movieId, reviews, isLoading }) => {
 				) : (
 					<p>Comments not found!</p>
 				)}
+			</div> */}
+			<div>
+				{user && <ReviewForm movieId={movieId} reviews={reviews} />}
+				<div className={style.reviews__item}>
+					{reviews.map(rev => (
+						<CommentItem review={rev} key={rev.id} />
+					))}
+				</div>
 			</div>
 		</div>
 	)
