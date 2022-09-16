@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from 'react'
 import Meta from '@/utils/Meta'
 import { IMeta } from '@/interfaces/IMeta.interface'
-import Header from './header/Header'
+import Header from '../header/Header'
 
 const Layout: FC<PropsWithChildren<IMeta>> = ({ children, ...meta }) => {
 	return (
