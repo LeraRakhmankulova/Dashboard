@@ -8,6 +8,7 @@ import { IMovie } from '@/interfaces/IMovie.interface'
 
 import { MovieService } from '@/services/movie.service'
 
+import ReviewForm from '../reviews/ReviewForm'
 import Reviews from '../reviews/Reviews'
 
 import style from './Movie.module.sass'
@@ -103,6 +104,7 @@ const Movie = () => {
 					</ul>
 				</div>
 			</div>
+			<ReviewForm movieId={movieMock.id} reviews={movieMock?.reviews || []} />
 			<Reviews
 				movieId={movieMock.id}
 				reviews={movieMock?.reviews || []}
