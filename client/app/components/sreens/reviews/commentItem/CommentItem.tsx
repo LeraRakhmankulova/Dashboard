@@ -9,15 +9,16 @@ const CommentItem: FC<{ review: IReview }> = ({ review }) => {
 	return (
 		<div className={style.comment}>
 			<div className={style.comment__author}>
-				
 				<Image
 					src={review.user.avatarPath}
 					alt={review.user.email}
-					width={40}
-					height={40}
+					width={50}
+					height={50}
 				/>
-				<div className={style.comment__author__name}>{review.user.name}</div>
-				<div className={style.comment__author__mail}>{review.user.email}</div>
+				<div className={style.comment__author__info}>
+					<h4>{review.user.email}</h4>
+					<p>{review.user.name}</p>
+				</div>
 			</div>
 			<article className={style.comment__description}>
 				{review.description}
