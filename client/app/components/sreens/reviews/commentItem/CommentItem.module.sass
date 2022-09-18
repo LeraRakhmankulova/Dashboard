@@ -1,11 +1,18 @@
 @keyframes comment
-    from 
+    0%
+        left: 0%
         background: linear-gradient(244.69deg, rgba(193, 117, 255, 0.199) 24.58%, rgba(193, 164, 255, 0.313) 33.56%, rgba(134, 104, 255, 0.299) 54.55%)
-    to 
+    50%
+        left: 50%
+    100%
+        left: 100%
         background: linear-gradient(244.69deg, rgba(205, 151, 249, 0.199) 24.58%, rgba(209, 187, 254, 0.313) 33.56%, rgba(138, 110, 252, 0.299) 54.55%)
 
 .comment
-    animation: comment 2s infinite
+    animation-name: comment 
+    animation-duration: 4s
+    animation-timing-function: linear
+    animation-iteration-count: infinite
     @apply p-4 my-6
     
     color: #222222
