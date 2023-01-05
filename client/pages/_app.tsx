@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import AuthProvider from 'providers/auth/AuthProvider'
-
+import '../styles/globals.css'
 import '../app/assets/styles/globals.sass'
 
 const queryClient = new QueryClient({
