@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import AuthForm from '../Layout/auth/AuthForm'
+import AuthForm from '../../auth/AuthForm'
 import styles from './Header.module.sass'
 import Logo from './Logo'
 

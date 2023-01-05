@@ -12,8 +12,8 @@ const Reviews: FC<IComment> = ({ movieId, reviews, isLoading }) => {
 	const { user } = useAuth()
 	return (
 		<div className={style.reviews}>
+			<div>{user && <ReviewForm movieId={movieId} reviews={reviews} />}</div>
 			<div>
-				{user && <ReviewForm movieId={movieId} reviews={reviews} />}
 				{isLoading ? (
 					// <Loader count={5} />
 					<div>loading here</div>

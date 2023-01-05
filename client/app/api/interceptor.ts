@@ -18,10 +18,10 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use((config) => {
-    const acessToken = Cookies.get('acessToken')
+    const accessToken = Cookies.get('accessToken')
 
-    if (config.headers && acessToken)
-        config.headers.Authorization = `Bearer ${acessToken}`
+    if (config.headers && accessToken)
+        config.headers.Authorization = `Bearer ${accessToken}`
     return config
 })
 

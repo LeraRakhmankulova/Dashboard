@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -9,7 +9,6 @@ import { IReview, IReviewDto } from '@/interfaces/IReview.interface'
 import { ReviewService } from '@/services/reviews.service'
 
 import style from './Reviews.module.sass'
-import { queryClient } from '../../../../pages/_app'
 
 const ReviewForm: FC<{ movieId: number, reviews: IReview[]}> = ({
 	movieId
@@ -21,6 +20,7 @@ const ReviewForm: FC<{ movieId: number, reviews: IReview[]}> = ({
 		reset
 	} = useForm<IReviewDto>({ mode: 'onChange' })
 
+	const queryClient = useQueryClient()
 	const { mutateAsync } = useMutation(
 		['add review'],
 		(data: IReviewDto) => ReviewService.createReview({ ...data, movieId }),

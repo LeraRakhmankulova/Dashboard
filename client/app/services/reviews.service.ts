@@ -1,13 +1,8 @@
 import { IReview, IReviewDto } from "@/interfaces/IReview.interface"
-import axios,{ axiosClassic } from "api/interceptor"
+import interceptor from "api/interceptor"
 
 export const ReviewService = {
-    // async getReviewById(id: string){
-    //     return axiosClassic.get<IReview>(`/review/${id}`)
-    // },
-
-    // async getAall(?)
     async createReview(body: IReviewDto){
-        return axios.post<string>('/review', body)
+        return interceptor.post<IReview>('/review', body)
     }
 }

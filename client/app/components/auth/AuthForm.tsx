@@ -13,13 +13,13 @@ import { AuthService } from '@/services/auth/auth.service'
 
 import { menuAnimation } from '@/utils/animation/fade'
 
-import userIcon from '../../../../assets/images/user.svg'
-import Button from '../../Button/Button'
-import Field from '../../Field/Field'
-import UserAvatar from '../../UserAvatar/UserAvatar'
+import userIcon from '../../assets/images/user.svg'
+import UserAvatar from '../ui/UserAvatar/UserAvatar'
 
 import { validEmail } from './Auth.constants'
 import style from './Auth.module.sass'
+import Button from '../ui/Button/Button'
+import Field from '../ui/Field/Field'
 
 const AuthForm: FC = () => {
 	const { ref, setIsShow, isShow } = useOutside(false)
