@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 import { FC, PropsWithChildren, createContext, useState, useEffect } from 'react'
 
-import { IContext, TypeUserState } from '../../interfaces/IContext.interface'
+import { IContext, TypeUserState } from '@/interfaces/IContext.interface'
 
 export const AuthContext = createContext({} as IContext)
 
@@ -22,8 +22,8 @@ const AuthProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
 	}, [])
 
 	useEffect(() => {
-		const acessToken = Cookies.get('acessToken')
-		if(!acessToken && !user){
+		const accessToken = Cookies.get('accessToken')
+		if(!accessToken && !user){
 			AuthService.logout()
 			setUser(null)
 		}
