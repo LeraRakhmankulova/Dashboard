@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import AuthProvider from 'providers/auth/AuthProvider'
 
@@ -19,7 +18,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 			<AuthProvider>
 				<Component {...pageProps} />
 			</AuthProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>
 	)
 }
