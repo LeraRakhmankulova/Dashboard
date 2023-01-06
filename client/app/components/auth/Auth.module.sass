@@ -3,12 +3,11 @@
 
     .form
         @apply p-4 absolute right-2 w-60 pt-10
+        z-index: 2
         top: calc(100% + 0.5em )
         border-radius: 8px
-        border-top: 3px solid #fff
-        border-left: 4px solid #fff
-        background: #fefefef0
-        box-shadow: 2px 4px 6px rgba(81, 0, 255, 0.114)
+        background: linear-gradient(90deg, #0a011a 0%, #000205 100%, #00C9FF 100%)
+        box-shadow: 10px 10px 30px rgba(81, 0, 255, 0.114)
 
         .register
             @apply opacity-40 block text-center w-full
@@ -17,7 +16,7 @@
     .button
         @apply px-1 pt-1 cursor-pointer
         box-shadow: 0 3px 6px rgba(81, 0, 255, 0.1)
-        border-radius: 100%a
+        border-radius: 100%
         transition: .4s
         &:hover
             transition: .4s

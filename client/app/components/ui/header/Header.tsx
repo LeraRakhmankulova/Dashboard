@@ -7,12 +7,16 @@ import settings from '../../../../public/settings.svg';
 const Header = () => {
     return (
         <header className={styles.header}>
-            <aside>
-                <AuthForm/>
-                <Link href='/'>
-                    <Image src={settings} alt='settings'/>
-                </Link>
-            </aside>
+            <ul>
+                <li>
+                    <AuthForm/>
+                </li>
+                <li>
+                    <Link href='/'>
+                        <Image src={settings} alt='settings'/>
+                    </Link>
+                </li>
+            </ul>
         </header>
     )
 }

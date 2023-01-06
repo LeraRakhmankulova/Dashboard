@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Sidebar: FC = () => {
     return (
-        <header className={styles.header}>
+        <div className={styles.sidebar}>
             <nav>
                 <ul>
                     <li>
@@ -36,7 +36,7 @@ const Sidebar: FC = () => {
                     </li>
                 </ul>
             </nav>
-        </header>
+        </div>
     )
 }
 export default Sidebar

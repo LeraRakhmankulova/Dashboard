@@ -11,7 +11,7 @@ const Layout: FC<PropsWithChildren<IMeta>> = ({children, ...meta}) => {
             <Meta {...meta}/>
             <div className={styles.main}>
                 <Sidebar/>
-                <main className='p-4' style={{background: 'black'}}>
+                <main>
                     <Header/>
                     {children}
                 </main>
