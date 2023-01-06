@@ -18,7 +18,6 @@ const Movie = () => {
 	const movieId = Number(query?.id)
 
 	const {
-		refetch,
 		data: movie,
 		isLoading
 	} = useQuery(

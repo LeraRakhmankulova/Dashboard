@@ -13,7 +13,7 @@ import { AuthService } from '@/services/auth/auth.service'
 
 import { menuAnimation } from '@/utils/animation/fade'
 
-import userIcon from '../../assets/images/user.svg'
+import userIcon from '../../../public/profile.svg'
 import UserAvatar from '../ui/UserAvatar/UserAvatar'
 
 import { validEmail } from './Auth.constants'

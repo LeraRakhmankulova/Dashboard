@@ -1,14 +1,20 @@
-import React, { FC } from 'react'
-import AuthForm from '../../auth/AuthForm'
-import styles from './Header.module.sass'
-import Logo from './Logo'
+import styles from './index.module.sass'
+import AuthForm from "@/components/auth/AuthForm";
+import Link from "next/link";
+import Image from "next/image";
+import settings from '../../../../public/settings.svg';
 
-const Header: FC = () => {
-	return (
-		<header className={styles.header}>
-			<Logo />
-			<AuthForm/>
-		</header>
-	)
+const Header = () => {
+    return (
+        <header className={styles.header}>
+            <aside>
+                <AuthForm/>
+                <Link href='/'>
+                    <Image src={settings} alt='settings'/>
+                </Link>
+            </aside>
+        </header>
+    )
 }
+
 export default Header
