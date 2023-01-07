@@ -1,9 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
-
 import Home from '@/components/sreens/home/Home'
-
 import { IHome } from '@/interfaces/IHome.interface'
-
 import { MovieService } from '@/services/movie.service'
 import { IMovie } from '@/interfaces/IMovie.interface'
 
