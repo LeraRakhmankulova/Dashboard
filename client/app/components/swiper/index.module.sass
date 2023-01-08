@@ -1,4 +1,6 @@
 @import "../../assets/styles/variables.sass"
+@import "../../assets/styles/mixins.sass"
+
 .main
   position: relative
 
@@ -18,6 +20,9 @@
     height: 100%
     position: absolute
     top: 0
+    &__genre
+      margin-bottom: 1.5rem
+      @include genre-wrap
 
     &__info
       padding: 0 15%
@@ -37,12 +42,16 @@
           font-size: 56px
           line-height: 64px
 
-        > button
+        button
           margin-top: 10px
           display: block
           padding: 5px 40px
           box-shadow: 0 16px 16px 4px rgba(0, 0, 0, 0.12)
           border-radius: 40px
           border: 1px solid $primary-gradient
+
           &:hover
             background: $primary-gradient
+            opacity: 1
+
+

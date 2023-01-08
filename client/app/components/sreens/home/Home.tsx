@@ -11,15 +11,15 @@ const Home: FC<IHome> = ({newMovies}) => {
         <Layout title="Cinema dashboard">
             <div className={style.home_page}>
                 <Swiper data={filmsMock}/>
-                {/*<div className={style.home_page__catalog}>*/}
-                {/*	{newMovies.length ? (*/}
-                {/*		newMovies.map(movieItem => (*/}
-                {/*			<MovieItem movie={movieItem} key={movieItem.id} />*/}
-                {/*		))*/}
-                {/*	) : (*/}
-                {/*		<h3>Movies not found...</h3>*/}
-                {/*	)}*/}
-                {/*</div>*/}
+                <div className={style.home_page__wrap}>
+                	{newMovies.length ? (
+                		newMovies.map(movieItem => (
+                			<MovieItem movie={movieItem} key={movieItem.id} />
+                		))
+                	) : (
+                		<h3>Movies not found...</h3>
+                	)}
+                </div>
             </div>
         </Layout>
     )

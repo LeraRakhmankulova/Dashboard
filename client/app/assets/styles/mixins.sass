@@ -1,0 +1,18 @@
+@mixin appearance-effect($name)
+  @keyframes #{$name}
+    from
+      opacity: 0
+    to
+      opacity: 1
+
+@mixin genre-wrap
+  display: inline-block
+  position: relative
+  background: rgba(29, 29, 29, 0.5)
+  border-radius: 0px 8px
+  padding: 7px 10px
+
+  font-style: normal
+  font-size: 14px
+  line-height: 16px
+  color: #0FEFFD

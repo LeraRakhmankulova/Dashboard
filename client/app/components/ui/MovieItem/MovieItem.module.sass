@@ -1,19 +1,15 @@
+@import "../../../assets/styles/variables.sass"
+
 .movie
-    @apply mr-5
-    transition: .5s
-    border-radius: 6px
-    background: linear-gradient(0.25turn, #0e0445, #0b0015)
-    box-shadow: 12px 14px 8px rgba(81, 0, 255, 0.114)
-    
+    display: inline-block
     &__rating
-        @apply absolute -ml-2 -mt-1 px-2 py-0.5 z-10 bg-green-600 text-white
-        text-center
+        @apply absolute -ml-2 -mt-1 px-2 py-0.5 z-10 text-white text-center
+        background: $primary-gradient
         border-radius: 3px
         box-shadow: 4px 6px 12px 0px rgba(26, 26, 26, 0.342)
     
     &__poster
         @apply overflow-hidden
-        border-radius: 5px
     
     &__heading
         @apply text-white pb-3 font-bold text-base text-center

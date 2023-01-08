@@ -9,13 +9,14 @@ interface ICoverProps {
     img: string,
     title: string,
     description: string
+    genre?: string
 }
 
 const Swiper: FC<{ data: ICoverProps[] }> = ({data}) => {
     return (
         <div className={styles.main}>
             <SwiperLayout
-                navigation={true}
+                navigation
                 speed={3000}
                 loop={true}
                 autoplay={{
@@ -31,6 +32,7 @@ const Swiper: FC<{ data: ICoverProps[] }> = ({data}) => {
                         <div className={styles.main__film}>
                             <div className={styles.main__film__info}>
                                 <aside>
+                                    <div className={styles.main__film__genre}>{el.genre}</div>
                                     <h1>{el.title}</h1>
                                     <label>{el.description}</label>
                                     <Button>Watch</Button>
