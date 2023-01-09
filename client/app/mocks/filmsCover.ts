@@ -18,3 +18,25 @@ export const filmsMock = [
         genre: 'Fantasy'
     }
 ]
+export const filmsCardsMock = [
+    {
+        img: '/card-img.png',
+        title: 'Action',
+        genre: 'Fantasy'
+    },
+    {
+        img: '/card-img (1).png',
+        title: 'Mortal Kombat',
+        genre: 'Fantasy'
+    },
+    {
+        img: '/card-img (2).png',
+        title: 'The Courier',
+        genre: 'Drama'
+    },
+    {
+        img: '/card-img (3).png',
+        title: 'Thunder Force',
+        genre: 'Action'
+    }
+]

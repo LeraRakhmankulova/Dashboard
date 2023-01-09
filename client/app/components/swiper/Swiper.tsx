@@ -1,21 +1,24 @@
 import {Swiper as SwiperLayout, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import {Navigation, Autoplay} from "swiper";
-import {FC} from "react";
+import {FC, PropsWithChildren} from "react";
 import styles from './index.module.sass'
 import Button from "@/ui/Button/Button";
+import FullCoverMovie from "@/components/swiper/moviesCovers/FullCoverMovie";
+import {children} from "dom7";
 
 interface ICoverProps {
     img: string,
     title: string,
-    description: string
+    description?: string
     genre?: string
 }
 
-const Swiper: FC<{ data: ICoverProps[] }> = ({data}) => {
+const Swiper: FC<any> = ({children}) => {
     return (
         <div className={styles.main}>
             <SwiperLayout
+                slidesPerView={1}
                 navigation
                 speed={3000}
                 loop={true}
@@ -24,22 +27,9 @@ const Swiper: FC<{ data: ICoverProps[] }> = ({data}) => {
                 }}
                 modules={[Navigation, Autoplay]}
             >
-                {data.map((el, idx) =>
-                    <SwiperSlide key={idx}>
-                        <div className={styles.main__wrap}>
-                            <img src={el.img}/>
-                        </div>
-                        <div className={styles.main__film}>
-                            <div className={styles.main__film__info}>
-                                <aside>
-                                    <div className={styles.main__film__genre}>{el.genre}</div>
-                                    <h1>{el.title}</h1>
-                                    <label>{el.description}</label>
-                                    <Button>Watch</Button>
-                                </aside>
-                            </div>
-                        </div>
-                    </SwiperSlide>)}
+                <SwiperSlide>
+                    {children}
+                </SwiperSlide>)
             </SwiperLayout>
         </div>
     )
