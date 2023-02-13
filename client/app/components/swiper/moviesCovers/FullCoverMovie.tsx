@@ -1,13 +1,7 @@
 import styles from './index.module.sass'
 import Button from "@/ui/Button/Button";
 import {FC} from "react";
-
-interface ICoverProps {
-    img: string,
-    title: string,
-    description?: string
-    genre?: string
-}
+import {ICoverProps} from "@/interfaces/IMovieCover";
 
 const FullCoverMovie: FC<{ data: ICoverProps }> = ({data}) => {
     return (

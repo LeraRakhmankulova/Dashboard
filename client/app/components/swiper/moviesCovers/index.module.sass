@@ -1,5 +1,5 @@
-@import "../../../assets/styles/variables.sass"
-@import "../../../assets/styles/mixins.sass"
+@import "../../../assets/styles/variables"
+@import "../../../assets/styles/mixins"
 
 .main
   position: relative
@@ -53,5 +53,24 @@
           &:hover
             background: $primary-gradient
             opacity: 1
+  &__sm
+    position: relative
+    z-index: 100
+    opacity: 1
+    aside
+      position: absolute
+      bottom: 0
+      margin-left: 1rem
+      h1
+        font-size: 24px
+  &__wrp
+    &::before
+      content: ''
+      background: rgba(4, 4, 4, 0.49)
+      z-index: 2
+      position: absolute
+      width: 100%
+      height: 100%
+      box-shadow: inset 10px 10px 100px rgba(0, 0, 0, 0.71)
 
 

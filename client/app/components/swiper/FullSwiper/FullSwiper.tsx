@@ -3,18 +3,10 @@ import 'swiper/css';
 import {Navigation, Autoplay} from "swiper";
 import {FC, PropsWithChildren} from "react";
 import styles from './index.module.sass'
-import Button from "@/ui/Button/Button";
 import FullCoverMovie from "@/components/swiper/moviesCovers/FullCoverMovie";
-import {children} from "dom7";
+import {filmsMock} from "../../../mocks/filmsCover";
 
-interface ICoverProps {
-    img: string,
-    title: string,
-    description?: string
-    genre?: string
-}
-
-const Swiper: FC<any> = ({children}) => {
+const FullSwiper: FC<any> = () => {
     return (
         <div className={styles.main}>
             <SwiperLayout
@@ -27,12 +19,13 @@ const Swiper: FC<any> = ({children}) => {
                 }}
                 modules={[Navigation, Autoplay]}
             >
-                <SwiperSlide>
-                    {children}
-                </SwiperSlide>)
+                {filmsMock.map((el, idx) =>
+                    <SwiperSlide>
+                        <FullCoverMovie data={el} key={idx}/>
+                    </SwiperSlide>)}
             </SwiperLayout>
         </div>
     )
 }
 
-export default Swiper
+export default FullSwiper
