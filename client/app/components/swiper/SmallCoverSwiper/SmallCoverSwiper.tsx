@@ -13,7 +13,7 @@ const SmallCoverSwiper: FC<any> = () => {
         <div className={styles.main}>
             <SwiperLayout
                 slidesPerView={6}
-                spaceBetween={30}
+                spaceBetween={20}
                 navigation
                 speed={3000}
                 loop={true}

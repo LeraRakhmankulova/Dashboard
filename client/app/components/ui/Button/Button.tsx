@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from 'react'
 
 import { IButton } from '@/interfaces/IButton.interface'
 
-import style from './Button.module.sass'
+import style from './index.module.sass'
 
 const Button: FC<PropsWithChildren<IButton>> = ({
 	children,

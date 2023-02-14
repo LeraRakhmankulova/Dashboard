@@ -20,6 +20,7 @@
     height: 100%
     position: absolute
     top: 0
+
     &__genre
       margin-bottom: 1.5rem
       @include genre-wrap
@@ -53,20 +54,24 @@
           &:hover
             background: $primary-gradient
             opacity: 1
+
   &__sm
     position: relative
-    z-index: 100
+    z-index: 10
     opacity: 1
+
     aside
       position: absolute
       bottom: 0
       margin-left: 1rem
+
       h1
         font-size: 24px
+
   &__wrp
     &::before
       content: ''
-      background: rgba(4, 4, 4, 0.49)
+      background: rgba(4, 4, 4, 0.05)
       z-index: 2
       position: absolute
       width: 100%
