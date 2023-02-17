@@ -14,7 +14,10 @@ const Reviews = () => {
                 </div>
             </div>
             <div className={styles.review__content}>
-               <InputField/>
+                <InputField/>
+                <div className={styles.review__comments}>
+                    <div>sddww</div>
+                </div>
             </div>
         </div>
     )
