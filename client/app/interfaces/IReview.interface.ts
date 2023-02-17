@@ -15,5 +15,4 @@ export interface IReviewDto extends Pick<IReview, 'description'>{
 export interface IComment{
     movieId: number
     reviews: IReview[]
-    isLoading: boolean
 }

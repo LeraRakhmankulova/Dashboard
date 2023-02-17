@@ -19,7 +19,6 @@ import UserAvatar from '../ui/UserAvatar/UserAvatar'
 import { validEmail } from './Auth.constants'
 import style from './Auth.module.sass'
 import Button from '../ui/Button/Button'
-import Field from '../ui/Field/Field'
 
 const AuthForm: FC = () => {
 	const { ref, setIsShow, isShow } = useOutside(false)
@@ -86,29 +85,7 @@ const AuthForm: FC = () => {
 				variants={menuAnimation}
 			>
 				<form className={style.form} onSubmit={handleSubmit(onSubmit)}>
-					<Field
-						{...register('email', {
-							required: 'Email is required',
-							pattern: {
-								value: validEmail,
-								message: 'Please enter a valid email address'
-							}
-						})}
-						placeholder="Email"
-						error={errors.email}
-					/>
-					<Field
-						{...register('password', {
-							required: 'Password is required',
-							minLength: {
-								value: 6,
-								message: 'Min lenght should more 6 symbols'
-							}
-						})}
-						placeholder="Password"
-						error={errors.password}
-						type={'password'}
-					/>
+
 					<div className="mt-5 mb-1 text-center">
 						<Button onClick={() => setType('login')}> Login </Button>
 					</div>
