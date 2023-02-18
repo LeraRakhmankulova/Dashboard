@@ -1,14 +1,20 @@
 import styles from './index.module.sass'
-import {useState} from "react";
-import {useForm} from "react-hook-form";
+import {FC, memo} from "react";
 
-const InputField = () => {
-    const {register} = useForm()
+interface InputProps{
+    placeholder: string,
+    name: string
+    error: any,
+    register: any
+}
+
+const InputField:FC<InputProps> = ({placeholder, name, error, register}) => {
     return (
         <div className={styles.input}>
-            <input placeholder="name" {...register("firstName")} />
+            <input placeholder={placeholder} {...register(name)}/>
+            <p>{error}</p>
         </div>
     )
 }
 
-export default InputField
+export default memo(InputField)

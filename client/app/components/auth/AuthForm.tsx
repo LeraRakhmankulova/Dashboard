@@ -11,7 +11,6 @@ import userIcon from '../../../public/profile.svg'
 import UserAvatar from '../ui/UserAvatar/UserAvatar'
 import style from './Auth.module.sass'
 import Button from '../ui/Button/Button'
-import InputField from "@/ui/InputField/InputField";
 import { yupResolver } from '@hookform/resolvers/yup';
 import {LoginSchema, PasswordSchema} from "@/utils/schemas/validationSchema";
 import LoginForm from "@/components/auth/Forms/LoginForm";
@@ -45,16 +44,8 @@ const AuthForm: FC = () => {
                 animate={isShow ? 'open' : 'closed'}
                 variants={menuAnimation}>
                 <div className={style.form}>
-                    {type === 'login' ? <LoginForm/> : <RegForm/>}
-                    <div className="mt-5 mb-1 text-center">
-                        <Button onClick={() => setType('login')}> Login </Button>
-                    </div>
-                    <button
-                        className={style.register}
-                        onClick={() => setType('register')}
-                    >
-                        Register
-                    </button>
+                    {type === 'login' ? <LoginForm setType={() => setType('login')}/>
+                        : <RegForm setType={() => setType('register')}/>}
                 </div>
             </motion.div>
         </div>
