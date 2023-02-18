@@ -1,73 +1,26 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
-import { InjectModel } from '@nestjs/sequelize';
-import { AuthDto } from './dto/auth.dto';
-import { UserModel } from './user.model';
-import { genSalt, hash, compare } from 'bcryptjs'
-import { faker } from '@faker-js/faker';
+import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
-    constructor(
-        @InjectModel(UserModel)
-        private readonly userModel: typeof UserModel,
-        private readonly jwtService: JwtService
-    ) { }
+  create(createUserDto: CreateUserDto) {
+    return 'This action adds a new user';
+  }
 
-    async login(dto: AuthDto) {
-        const user = await this.validateUser(dto)
+  findAll() {
+    return `This action returns all user`;
+  }
 
-        return {
-            user: this.returnUserFields(user),
-            accessToken: await this.issueAccessToken(String(user.id))
-        }
-    }
+  findOne(id: number) {
+    return `This action returns a #${id} user`;
+  }
 
-    async register(dto: AuthDto) {
-        const oldUser = await this.userModel.findOne({
-            where: { email: dto.email }
-        })
-        if (oldUser) throw new BadRequestException('User with this email already exist')
-        const salt = await genSalt(10)
+  update(id: number, updateUserDto: UpdateUserDto) {
+    return `This action updates a #${id} user`;
+  }
 
-        const user = await this.userModel.create({
-            name: faker.name.firstName(),
-            avatarPath: faker.image.avatar(),
-            email: dto.email,
-            password: await hash(dto.password, salt)
-        })
-
-        return {
-            user: this.returnUserFields(user),
-            acessToken: await this.issueAccessToken(String(user.id))
-        }
-    }
-
-    async validateUser(dto: AuthDto) {
-        const user = await this.userModel.findOne({
-            where: { email: dto.email },
-            attributes: ['id', 'email', 'password', 'name', 'avatarPath']
-        })
-        if (!user) throw new UnauthorizedException('User not found')
-
-        const isValidPassword = await compare(dto.password, user.password)
-        if (!isValidPassword) throw new UnauthorizedException('Invalid password')
-
-        return user
-    }
-
-    async issueAccessToken(userId: string) {
-        const data = { id: userId }
-
-        return await this.jwtService.signAsync(data, { expiresIn: '31d' })
-    }
-
-    async returnUserFields(user: UserModel) {
-        return {
-            id: user.id,
-            email: user.email,
-            avatarPath: user.avatarPath,
-            name: user.name
-        }
-    }
+  remove(id: number) {
+    return `This action removes a #${id} user`;
+  }
 }
