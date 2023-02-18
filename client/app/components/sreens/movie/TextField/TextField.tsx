@@ -1,7 +1,7 @@
 import styles from './index.module.sass'
 import {useState} from "react";
 
-const InputField = () => {
+const TextField = () => {
     const [active, setActive] = useState(false)
     return (
         <div className={styles.input}>
@@ -13,4 +13,4 @@ const InputField = () => {
     )
 }
 
-export default InputField
+export default TextField

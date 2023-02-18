@@ -1,5 +1,6 @@
 import styles from './index.module.sass'
-import InputField from "@/components/sreens/movie/InputField/InputField";
+import TextField from "@/components/sreens/movie/InputField/TextField";
+import Comment from "@/components/sreens/movie/Comment/Comment";
 
 const Reviews = () => {
     return (
@@ -14,9 +15,9 @@ const Reviews = () => {
                 </div>
             </div>
             <div className={styles.review__content}>
-                <InputField/>
+                <TextField/>
                 <div className={styles.review__comments}>
-                    <div>sddww</div>
+                  <Comment/>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ export interface IReview{
     user: IUser
     movie: IMovie
     description: string
+    createdAt: string
 }
 
 export interface IReviewDto extends Pick<IReview, 'description'>{
