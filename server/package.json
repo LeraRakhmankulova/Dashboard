@@ -10,7 +10,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
+    "start:dev": "nodemon",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -20,16 +20,15 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
+    "@nestjs/class-validator": "^0.13.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
-    "@nestjs/sequelize": "^9.0.0",
     "@nestjs/serve-static": "^3.0.0",
     "@nestjs/typeorm": "^9.0.1",
-    "@types/sequelize": "^4.28.14",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.13.2",
     "dotenv": "^16.0.2",
@@ -41,8 +40,6 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "sequelize": "^6.21.4",
-    "sequelize-typescript": "^2.1.3",
     "typeorm": "^0.3.12"
   },
   "devDependencies": {
@@ -64,6 +61,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "28.1.3",
+    "nodemon": "^2.0.20",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
