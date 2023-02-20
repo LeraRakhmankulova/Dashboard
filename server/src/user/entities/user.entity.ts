@@ -1,4 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
 export class UserEntity {
@@ -16,4 +16,7 @@ export class UserEntity {
 
     @Column({nullable: true})
     avatarPath?: string
+
+    @CreateDateColumn()
+    createdAt: Date
 }
