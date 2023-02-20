@@ -1,12 +1,15 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
-export class Movie {
+export class MovieEntity {
     @PrimaryGeneratedColumn()
     id: number
 
     @Column({nullable: false})
     name: string
+
+    @Column({nullable: true})
+    genre: string
 
     @Column()
     rating: number | null
@@ -17,6 +20,8 @@ export class Movie {
     @Column()
     views: number
 
+    @Column({nullable: true})
+    description?: string
     // @Column()
     // reviews?: IReview[]
 
