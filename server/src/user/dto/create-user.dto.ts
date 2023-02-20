@@ -1,18 +1,16 @@
-import {IsEmail, Min} from "@nestjs/class-validator";
-import {Column} from "typeorm";
+import {IsEmail, IsNotEmpty, Min} from "class-validator";
 
 export class CreateUserDto {
-    @Column()
+    @IsNotEmpty()
     fullname: string
 
     @IsEmail()
-    @Column()
+    @IsNotEmpty()
     email: string
 
     @Min(6)
-    @Column({nullable: false})
+    @IsNotEmpty()
     password: string
 
-    @Column()
     avatarPath: string
 }

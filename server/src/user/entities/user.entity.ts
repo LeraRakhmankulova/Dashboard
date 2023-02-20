@@ -1,19 +1,16 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
-import {IsEmail, Min} from "@nestjs/class-validator";
 
 @Entity()
 export class UserEntity {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({nullable: false})
     fullname: string
 
-    @IsEmail()
-    @Column()
+    @Column({nullable: false})
     email: string;
 
-    @Min(6)
     @Column({nullable: false})
     password: string
 
