@@ -12,7 +12,10 @@ export class ReviewService {
     }
 
     create(reviewDto: CreateReviewDto) {
-        return this.repository.save(reviewDto);
+        return this.repository.save({
+            description: reviewDto.description,
+            movie: {id: reviewDto.movieId}
+        });
     }
 
     findAll() {

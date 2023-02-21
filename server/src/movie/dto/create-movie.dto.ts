@@ -14,8 +14,5 @@ export class CreateMovieDto {
 
     description?: string
 
-    // @Column()
-    // reviews?: IReview[]
-
     fees: number
 }

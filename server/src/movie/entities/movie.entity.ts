@@ -22,8 +22,6 @@ export class MovieEntity {
 
     @Column({nullable: true})
     description?: string
-    // @Column()
-    // reviews?: IReview[]
 
     @Column()
     fees: number
