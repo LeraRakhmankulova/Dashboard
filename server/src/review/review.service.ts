@@ -3,7 +3,7 @@ import {CreateReviewDto} from './dto/create-review.dto';
 import {UpdateReviewDto} from './dto/update-review.dto';
 import {InjectRepository} from "@nestjs/typeorm";
 import {ReviewEntity} from "./entities/review.entity";
-import {Repository} from "typeorm";
+import {createQueryBuilder, Repository} from "typeorm";
 
 @Injectable()
 export class ReviewService {
@@ -19,6 +19,13 @@ export class ReviewService {
     }
 
     findAll() {
+        return this.repository.find();
+    }
+
+    async findAllByPopular(){
+        const popular = await this.repository
+            .createQueryBuilder()
+            .orderBy("review.views", "DESC")
         return this.repository.find();
     }
 

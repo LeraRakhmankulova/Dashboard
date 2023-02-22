@@ -11,19 +11,19 @@ export class MovieEntity {
     @Column({nullable: true})
     genre: string
 
-    @Column({nullable: true})
-    rating?: number
+    @Column({default: 0})
+    rating: number
 
     @Column()
     poster: string
 
-    @Column()
+    @Column({default: 0})
     views: number
 
     @Column({nullable: true})
     description?: string
 
-    @Column()
+    @Column({default: 0})
     fees: number
 
     @CreateDateColumn()

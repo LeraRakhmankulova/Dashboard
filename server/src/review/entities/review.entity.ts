@@ -18,6 +18,9 @@ export class ReviewEntity {
     @Column({nullable: false})
     description: string
 
+    @Column({default: 0})
+    views: number
+
     @Column()
     createdAt: string
 }

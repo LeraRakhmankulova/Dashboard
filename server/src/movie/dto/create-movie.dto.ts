@@ -6,8 +6,7 @@ export class CreateMovieDto {
 
     genre: string
 
-    @IsEmpty()
-    rating?: number
+    rating: number
 
     poster: string
 
