@@ -11,8 +11,8 @@ export class MovieEntity {
     @Column({nullable: true})
     genre: string
 
-    @Column()
-    rating: number | null
+    @Column({nullable: true})
+    rating?: number
 
     @Column()
     poster: string

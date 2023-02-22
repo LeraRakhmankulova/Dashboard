@@ -1,7 +1,6 @@
-import {Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {MovieEntity} from "../../movie/entities/movie.entity";
 import {UserEntity} from "../../user/entities/user.entity";
-import {JoinColumn} from "typeorm/browser";
 
 @Entity()
 export class ReviewEntity {
