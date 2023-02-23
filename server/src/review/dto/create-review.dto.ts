@@ -4,7 +4,7 @@ export class CreateReviewDto {
     @IsNotEmpty()
     description: string
 
-    // @IsNumber()
+    @IsNumber()
     views: number
 
     @IsNotEmpty()

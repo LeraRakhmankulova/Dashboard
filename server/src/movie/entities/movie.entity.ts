@@ -26,6 +26,9 @@ export class MovieEntity {
     @Column({default: 0})
     fees: number
 
+    @Column({default: 0})
+    year: number
+
     @CreateDateColumn()
     createdAt: Date
 
