@@ -4,6 +4,7 @@ import {UpdateMovieDto} from './dto/update-movie.dto';
 import {InjectRepository} from "@nestjs/typeorm";
 import {MovieEntity} from "./entities/movie.entity";
 import {Repository} from "typeorm";
+import {SearchMovieDto} from "./dto/search-movie.dto";
 
 @Injectable()
 export class MovieService {
@@ -41,9 +42,29 @@ export class MovieService {
 
     findOne(id: number) {
         const found = this.repository.findOneBy({id})
+        this.repository
+            .createQueryBuilder("movie")
+            .whereInIds(id)
+            .update()
+            .set({views: () => 'views + 1'})
+            .where("id = :id", {id})
+            .execute()
         if (!found) throw  new NotFoundException('Not Found')
         return found;
     }
+
+    // async search(dto: string) {
+    //     const res = await this.repository
+    //         .createQueryBuilder("movie")
+    //         .where("movie.name = :name", {name: dto.name})
+    //         .getMany()
+    //     return res
+        // if(dto.name){
+        //     qb.where(`movie.name ILIKE :name`)
+        // }
+        // if(dto.genre){
+        //     qb.where(`movie.genre ILIKE :genre`)
+        // }
 
     update(id: number, updateMovieDto: UpdateMovieDto) {
         const found = this.repository.findOneBy({id})

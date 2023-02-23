@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import {Injectable, NotFoundException} from '@nestjs/common';
 import {CreateReviewDto} from './dto/create-review.dto';
 import {UpdateReviewDto} from './dto/update-review.dto';
 import {InjectRepository} from "@nestjs/typeorm";
@@ -34,7 +34,16 @@ export class ReviewService {
     }
 
     findOne(id: number) {
-        return this.repository.findOneBy({id});
+        const found = this.repository.findOneBy({id})
+        if (!found) throw new NotFoundException('Not Found')
+        this.repository
+            .createQueryBuilder("review")
+            .whereInIds(id)
+            .update()
+            .set({views: () => 'views + 1'})
+            .where("id = :id", {id})
+            .execute()
+        return found
     }
 
     update(id: number, updateReviewDto: UpdateReviewDto) {
