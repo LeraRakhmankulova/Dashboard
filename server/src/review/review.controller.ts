@@ -17,6 +17,11 @@ export class ReviewController {
     return this.reviewService.findAll();
   }
 
+  @Get('popular')
+  findAllByPopular() {
+    return this.reviewService.findAllByPopular();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.reviewService.findOne(+id);

@@ -14,19 +14,24 @@ export class ReviewService {
     create(reviewDto: CreateReviewDto) {
         return this.repository.save({
             description: reviewDto.description,
+            views: reviewDto.views,
             movie: {id: reviewDto.movieId}
         });
     }
 
     findAll() {
-        return this.repository.find();
+        // return this.repository.find();
+        return this.repository
+            .createQueryBuilder("review")
+            .orderBy("review.views", "DESC")
+            .getMany()
     }
 
-    async findAllByPopular(){
-        const popular = await this.repository
+    findAllByPopular() {
+        return this.repository
             .createQueryBuilder()
             .orderBy("review.views", "DESC")
-        return this.repository.find();
+            .getMany();
     }
 
     findOne(id: number) {
