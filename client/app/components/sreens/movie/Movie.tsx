@@ -1,4 +1,3 @@
-import {useQuery} from '@tanstack/react-query'
 import Image from 'next/image'
 import {useRouter} from 'next/router'
 import Layout from '@/components/ui/Layout/Layout'

@@ -4,7 +4,7 @@ import {FC} from "react";
 import avatar from '../../../../../public/avatar.jpg'
 import Image from "next/image";
 
-const Comment: FC<IReview> = () => {
+const Comment: FC<any> = () => {
     return (
         <div className={styles.comment}>
             <div className={styles.comment__wrap}>

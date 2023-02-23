@@ -1,5 +1,5 @@
 import styles from './index.module.sass'
-import TextField from "@/components/sreens/movie/InputField/TextField";
+import TextField from "@/components/sreens/movie/TextField/TextField";
 import Comment from "@/components/sreens/movie/Comment/Comment";
 
 const Reviews = () => {
