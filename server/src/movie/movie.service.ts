@@ -7,7 +7,8 @@ import {Repository} from "typeorm";
 
 @Injectable()
 export class MovieService {
-    constructor(@InjectRepository(MovieEntity) private repository: Repository<MovieEntity>) {
+    constructor(@InjectRepository(MovieEntity)
+                private repository: Repository<MovieEntity>) {
     }
 
     create(@Body() movieDto: CreateMovieDto) {
@@ -15,7 +16,27 @@ export class MovieService {
     }
 
     findAll() {
-        return this.repository.find();
+        return this.repository
+            .createQueryBuilder("movie")
+            .orderBy("movie.year", "DESC").getMany();
+    }
+
+    findAllByRating() {
+        return this.repository
+            .createQueryBuilder("movie")
+            .orderBy("movie.rating", "DESC").getMany();
+    }
+
+    findAllByFees() {
+        return this.repository
+            .createQueryBuilder("movie")
+            .orderBy("movie.fees", "DESC").getMany();
+    }
+
+    findAllByViews() {
+        return this.repository
+            .createQueryBuilder("movie")
+            .orderBy("movie.views", "DESC").getMany();
     }
 
     findOne(id: number) {

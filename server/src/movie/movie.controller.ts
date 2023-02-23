@@ -19,6 +19,21 @@ export class MovieController {
         return this.movieService.findAll();
     }
 
+    @Get('rating')
+    findAllByRating() {
+        return this.movieService.findAllByRating();
+    }
+
+    @Get('fees')
+    findAllByFees() {
+        return this.movieService.findAllByFees();
+    }
+
+    @Get('views')
+    findAllByViews() {
+        return this.movieService.findAllByViews();
+    }
+
     @Get(':id')
     findOne(@Param('id') id: string) {
         return this.movieService.findOne(+id);
