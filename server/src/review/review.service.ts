@@ -20,16 +20,15 @@ export class ReviewService {
     }
 
     findAll() {
-        // return this.repository.find();
         return this.repository
             .createQueryBuilder("review")
-            .orderBy("review.views", "DESC")
+            .orderBy("review.createdAt", "DESC")
             .getMany()
     }
 
     findAllByPopular() {
         return this.repository
-            .createQueryBuilder()
+            .createQueryBuilder("review")
             .orderBy("review.views", "DESC")
             .getMany();
     }
