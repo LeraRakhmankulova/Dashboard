@@ -2,6 +2,7 @@ import {Controller, Get, Post, Body, Patch, Param, Delete, Query} from '@nestjs/
 import {MovieService} from './movie.service';
 import {CreateMovieDto} from './dto/create-movie.dto';
 import {UpdateMovieDto} from './dto/update-movie.dto';
+import {SearchMovieDto} from "./dto/search-movie.dto";
 
 @Controller('movie')
 export class MovieController {
@@ -37,6 +38,11 @@ export class MovieController {
     @Get(':id')
     findOne(@Param('id') id: string) {
         return this.movieService.findOne(+id);
+    }
+
+    @Get('search')
+    search(@Body() dto: SearchMovieDto){
+        return this.movieService.search(dto)
     }
 
     @Patch(':id')
