@@ -53,18 +53,12 @@ export class MovieService {
         return found;
     }
 
-    // async search(dto: string) {
-    //     const res = await this.repository
-    //         .createQueryBuilder("movie")
-    //         .where("movie.name = :name", {name: dto.name})
-    //         .getMany()
-    //     return res
-        // if(dto.name){
-        //     qb.where(`movie.name ILIKE :name`)
-        // }
-        // if(dto.genre){
-        //     qb.where(`movie.genre ILIKE :genre`)
-        // }
+    async search(dto: SearchMovieDto) {
+        return await this.repository
+            .createQueryBuilder("movie")
+            .where("movie.name = :name", {name: dto.name})
+            .getMany()
+    }
 
     update(id: number, updateMovieDto: UpdateMovieDto) {
         const found = this.repository.findOneBy({id})
