@@ -10,7 +10,7 @@ export class AuthService {
     async validateUser(dto: AuthDto) {
         const users = await this.userService.findAll()
         const {password, ...user} = users.find((el) => el.email === dto.email)
-        
+
         if (!user) throw new UnauthorizedException('Not found')
 
         // const isValidPassword = await compare(dto.password, user.password)
