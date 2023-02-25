@@ -18,8 +18,14 @@ export class UserService {
         return this.repository.find();
     }
 
-    findOne(id: number) {
+    findOneById(id: number) {
         const found = this.repository.findOneBy({id})
+        if (!found) throw new NotFoundException("Not Found")
+        return found;
+    }
+
+    findOneByDto(dto: CreateUserDto){
+        const found = this.repository.findOneBy({...dto})
         if (!found) throw new NotFoundException("Not Found")
         return found;
     }

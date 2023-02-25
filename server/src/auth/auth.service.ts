@@ -1,21 +1,18 @@
 import {Injectable, UnauthorizedException} from '@nestjs/common';
 import {UserService} from "../user/user.service";
 import {AuthDto} from "./dto/auth.dto";
+import {CreateUserDto} from "../user/dto/create-user.dto";
 
 @Injectable()
 export class AuthService {
-    constructor(private userService: UserService) {
-    }
+    constructor(private userService: UserService) {}
 
-    async validateUser(dto: AuthDto) {
-        const users = await this.userService.findAll()
-        const {password, ...user} = users.find((el) => el.email === dto.email)
-
-        if (!user) throw new UnauthorizedException('Not found')
-
-        // const isValidPassword = await compare(dto.password, user.password)
-        // if (!isValidPassword) throw new UnauthorizedException('Invalid password')
-
-        return user
+    async validateUser(dto: CreateUserDto): Promise<any> {
+        const user = await this.userService.findOneByDto(dto);
+        if (user && user.password === dto.password) {
+            const { password, ...result } = user;
+            return result;
+        }
+        return null;
     }
 }
