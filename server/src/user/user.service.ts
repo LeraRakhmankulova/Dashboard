@@ -4,6 +4,7 @@ import {UpdateUserDto} from './dto/update-user.dto';
 import {InjectRepository} from "@nestjs/typeorm";
 import {UserEntity} from "./entities/user.entity";
 import {Repository} from "typeorm";
+import {AuthDto} from "../auth/dto/auth.dto";
 
 @Injectable()
 export class UserService {
@@ -24,8 +25,9 @@ export class UserService {
         return found;
     }
 
-    findOneByDto(dto: CreateUserDto){
-        const found = this.repository.findOneBy({...dto})
+    async findOneByDto(dto: AuthDto){
+        const {email} = dto
+        const found = await this.repository.findOneBy({email})
         if (!found) throw new NotFoundException("Not Found")
         return found;
     }

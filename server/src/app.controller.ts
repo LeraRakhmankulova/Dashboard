@@ -8,7 +8,7 @@ export class AppController {
         private readonly appService: AppService) {}
 
     @UseGuards(AuthGuard('local'))
-    @Post('auth/login')
+    @Post('auth')
     async login(@Request() req) {
         return req.user;
     }
