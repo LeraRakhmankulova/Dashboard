@@ -8,7 +8,8 @@ import {AuthDto} from "../auth/dto/auth.dto";
 
 @Injectable()
 export class UserService {
-    constructor(@InjectRepository(UserEntity) private repository: Repository<UserEntity>) {
+    constructor(@InjectRepository(UserEntity)
+                private repository: Repository<UserEntity>) {
     }
 
     create(@Body() userDto: CreateUserDto) {
@@ -25,8 +26,7 @@ export class UserService {
         return found;
     }
 
-    async findOneByDto(dto: AuthDto){
-        const {email} = dto
+    async findOneByEmail(email: string){
         const found = await this.repository.findOneBy({email})
         if (!found) throw new NotFoundException("Not Found")
         return found;
