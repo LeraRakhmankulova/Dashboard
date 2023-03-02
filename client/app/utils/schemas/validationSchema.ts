@@ -6,6 +6,6 @@ export const LoginSchema = yup.object().shape({
 })
 
 export const PasswordSchema = yup.object().shape({
-    name: yup.string().required('Имя обязательно')
+    fullname: yup.string().required('Имя обязательно')
 }).concat(LoginSchema)
 

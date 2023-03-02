@@ -7,7 +7,7 @@ export const instance = axios.create({
 
 export const UserApi = {
     async register(dto: RegisterFormType) {
-        const {data} = await instance.post('/user', dto)
+        const {data} = await instance.post('user', dto)
         return data
     },
     async login(dto: LoginFormType) {
