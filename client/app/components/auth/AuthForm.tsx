@@ -22,7 +22,7 @@ const AuthForm: FC = () => {
             {/*/>*/}
 
             <button className={style.button} onClick={() => setIsShow(!isShow)}>
-                <Image src={userIcon} width={25} height={25}/>
+                <Image src={userIcon} width={25} height={25} alt='icon'/>
             </button>
 
             <motion.div

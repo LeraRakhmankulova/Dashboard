@@ -1,7 +1,7 @@
 import {Swiper as SwiperLayout, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import {Navigation, Autoplay} from "swiper";
-import {FC, PropsWithChildren} from "react";
+import {FC} from "react";
 import styles from './index.module.sass'
 import FullCoverMovie from "@/components/swiper/moviesCovers/FullCoverMovie";
 import {filmsMock} from "../../../mocks/filmsCover";

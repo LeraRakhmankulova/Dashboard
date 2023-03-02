@@ -5,21 +5,31 @@ import InputField from "@/ui/InputField/InputField";
 import React, {memo} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
+import {LoginFormType} from "@/interfaces/IAuthFields.interface";
+import {UserApi} from "../../../utils/api/interceptor";
 
 const LoginForm = () => {
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(LoginSchema),
         mode: 'onSubmit'
     })
-    const handleClick = () => {
-
-    }
+    // const handleClick = async (data: LoginFormType) => {
+    //     try{
+    //         const res = await UserApi.login(data)
+    //         console.log(res)
+    //     }
+    //     catch(err){
+    //         console.warn(err)
+    //     }
+    // }
     return (
-        <form onSubmit={handleSubmit(data => console.log(data))}>
+        <form onSubmit={handleSubmit(() => console.log('any'))}>
             <InputField error={errors.email?.message} placeholder='Email' name='email' register={register}/>
             <InputField error={errors.password?.message} placeholder='Password' name='password' register={register}/>
             <div className="mt-5 text-center">
-                <Button className={style.button__active} type="submit">
+                <Button
+                    className={style.button__active}
+                        type="submit">
                     Login
                 </Button>
             </div>
@@ -27,4 +37,4 @@ const LoginForm = () => {
     )
 }
 
-export default memo(LoginForm)
+export default LoginForm
