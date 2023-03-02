@@ -5,31 +5,30 @@ import InputField from "@/ui/InputField/InputField";
 import React, {memo} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
-import {LoginFormType} from "@/interfaces/IAuthFields.interface";
 import {UserApi} from "../../../utils/api/interceptor";
 
 const LoginForm = () => {
-    const {register, handleSubmit, formState: {errors}} = useForm({
+    const {register, handleSubmit, formState, formState: {errors}} = useForm({
         resolver: yupResolver(LoginSchema),
         mode: 'onSubmit'
     })
-    // const handleClick = async (data: LoginFormType) => {
-    //     try{
-    //         const res = await UserApi.login(data)
-    //         console.log(res)
-    //     }
-    //     catch(err){
-    //         console.warn(err)
-    //     }
-    // }
+    const handleClick = async (data: any) => {
+        try {
+            const res = await UserApi.login(data)
+            console.log(res)
+        } catch (err) {
+            console.warn(err)
+        }
+    }
     return (
-        <form onSubmit={handleSubmit(() => console.log('any'))}>
+        <form onSubmit={handleSubmit(handleClick)}>
             <InputField error={errors.email?.message} placeholder='Email' name='email' register={register}/>
             <InputField error={errors.password?.message} placeholder='Password' name='password' register={register}/>
             <div className="mt-5 text-center">
                 <Button
                     className={style.button__active}
-                        type="submit">
+                    disabled={formState.isSubmitting}
+                    type="submit">
                     Login
                 </Button>
             </div>
@@ -37,4 +36,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default memo(LoginForm)
