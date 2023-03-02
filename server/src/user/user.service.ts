@@ -15,7 +15,11 @@ export class UserService {
         const {email} = userDto
         const found = await this.repository.findOneBy({email})
         if (found) throw new BadRequestException('This user already exist')
-        return this.repository.save(userDto);
+        return this.repository.save({
+            email: userDto.email,
+            fullname: userDto.fullname,
+            password: userDto.password
+        });
     }
 
     findAll() {
