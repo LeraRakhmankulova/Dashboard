@@ -9,8 +9,8 @@ export class UserController {
   constructor(private readonly userService: UserService,) {}
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto) {
-    return await this.userService.create(createUserDto);
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto);
   }
   // @UseGuards(AuthGuard('jwt'))
   @Get()

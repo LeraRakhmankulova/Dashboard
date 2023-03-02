@@ -21,17 +21,17 @@ const Sidebar: FC = () => {
                     </li>
                     <li>
                         <Link href='/'>
-                            <Image src={home} alt='logo' width={50}/>
+                            <Image src={home} alt='logo' width={25}/>
                         </Link>
                     </li>
                     <li>
                         <Link href='/'>
-                            <Image src={popular} alt='logo' width={50}/>
+                            <Image src={popular} alt='logo' width={25}/>
                         </Link>
                     </li>
                     <li>
                         <Link href='/'>
-                            <Image src={settings} alt='logo' width={50}/>
+                            <Image src={settings} alt='logo' width={25}/>
                         </Link>
                     </li>
                 </ul>

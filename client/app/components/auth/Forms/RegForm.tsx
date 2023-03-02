@@ -6,6 +6,7 @@ import React, {memo} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
 import {UserApi} from "../../../utils/api/interceptor";
+import {setCookie} from "cookies-next";
 
 const RegForm = () => {
     const {register, handleSubmit, formState, formState: {errors}} = useForm({
@@ -16,7 +17,8 @@ const RegForm = () => {
     const handleClick = async (data: any) => {
         try {
             const res = await UserApi.register(data)
-            console.log(data)
+            // setCookie(res.email, res.access_token, {  maxAge: 14 * 6 * 24 });
+            console.log(res)
         } catch (err) {
             console.warn(err)
         }

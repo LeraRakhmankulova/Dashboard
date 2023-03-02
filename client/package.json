@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",
+    "cookies-next": "^2.1.1",
     "framer-motion": "^7.2.1",
     "js-cookie": "^3.0.1",
     "nestjs": "^0.0.1",
