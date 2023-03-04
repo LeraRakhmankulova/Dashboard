@@ -8,6 +8,8 @@ import style from './Auth.module.sass'
 import Button from '../ui/Button/Button'
 import LoginForm from "@/components/auth/Forms/LoginForm";
 import RegForm from "@/components/auth/Forms/RegForm";
+import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
+
 const AuthForm: FC = () => {
     const {ref, setIsShow, isShow} = useOutside(false)
     const [type, setType] = useState<'login' | 'register'>('login')
@@ -30,13 +32,16 @@ const AuthForm: FC = () => {
                 animate={isShow ? 'open' : 'closed'}
                 variants={menuAnimation}>
                 <div className={style.form}>
-                  {type === 'login' ? <LoginForm/> : <RegForm/>}
+
+
+                    {type === 'login' ? <LoginForm/> : <RegForm/>}
                     <div className="mt-1 text-center">
                         <Button className={style.button__auth}
-                           onClick={() => setType(type === 'login' ? 'register' : 'login')}>
+                                onClick={() => setType(type === 'login' ? 'register' : 'login')}>
                             {type === 'login' ? 'Register' : 'Login'}
                         </Button>
                     </div>
+
                 </div>
             </motion.div>
         </div>
