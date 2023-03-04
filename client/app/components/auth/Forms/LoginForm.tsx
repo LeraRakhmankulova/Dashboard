@@ -5,7 +5,7 @@ import InputField from "@/ui/InputField/InputField";
 import React, {memo} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
-import {UserApi} from "../../../utils/api/interceptor";
+import {UserApi} from "@/utils/api/interceptor";
 
 const LoginForm = () => {
     const {register, handleSubmit, formState, formState: {errors}} = useForm({
