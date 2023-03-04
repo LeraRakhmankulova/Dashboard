@@ -8,9 +8,12 @@ import style from "@/components/auth/Auth.module.sass";
 import {UserApi} from "@/utils/api/interceptor";
 import {setCookie} from "cookies-next";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
+import {useDispatch} from "react-redux";
+import {saveData} from "../../../redux/slices/user.slice";
 
 const RegForm = () => {
     const [error, setError] = useState<string>('')
+    const dispatch = useDispatch()
     const {register, handleSubmit, formState, formState: {errors}} = useForm({
         resolver: yupResolver(PasswordSchema),
         mode: 'onChange'
@@ -20,6 +23,7 @@ const RegForm = () => {
         try {
             const res = await UserApi.register(data)
             setCookie('authToken', res.token, {maxAge: 14 * 60 * 60 * 24});
+            dispatch(saveData(data))
             console.log(res)
         } catch (err: any) {
             console.warn(err)

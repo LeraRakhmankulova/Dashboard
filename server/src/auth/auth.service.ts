@@ -20,21 +20,19 @@ export class AuthService {
     }
 
     async login(user: UserEntity) {
-        const payload = {email: user.email, sub: user.id};
-        const found = this.userService.findOneByEmail(user.email)
-        const {password, ...res} = user
+        const {password, ...userData} = user
         return {
-            ...res,
-            token: this.jwtService.sign(payload),
+            ...userData,
+            token: this.jwtService.sign(userData),
         };
     }
 
     async register(dto: CreateUserDto) {
-        const found = await this.userService.create(dto);
-        const {password, ...user} = found
+        const user = await this.userService.create(dto);
+        const {password, ...userData} = user
         return {
             ...user,
-            token: this.jwtService.sign(found),
+            token: this.jwtService.sign(userData),
         };
     }
 }
