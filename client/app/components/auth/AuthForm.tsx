@@ -22,7 +22,6 @@ const AuthForm: FC = () => {
 
             {userInfo ?
                 <UserAvatar
-                    title="Перейти на доску"
                     link="/profile"
                     avatarPath='/avatar.jpg'
                 /> :

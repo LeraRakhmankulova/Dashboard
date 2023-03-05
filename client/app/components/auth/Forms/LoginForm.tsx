@@ -7,9 +7,12 @@ import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
 import {UserApi} from "@/utils/api/interceptor";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
+import {saveData} from "../../../redux/slices/user.slice";
+import {useDispatch} from "react-redux";
 
 const LoginForm = () => {
     const [error, setError] = useState<string>('')
+    const dispatch = useDispatch()
     const {register, handleSubmit, formState, formState: {errors}} = useForm({
         resolver: yupResolver(LoginSchema),
         mode: 'onSubmit'
@@ -17,6 +20,7 @@ const LoginForm = () => {
     const handleClick = async (data: any) => {
         try {
             const res = await UserApi.login(data)
+            dispatch(saveData(data))
             console.log(res)
         } catch (err: any) {
             console.warn(err)
