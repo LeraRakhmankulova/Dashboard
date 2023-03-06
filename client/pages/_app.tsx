@@ -4,13 +4,12 @@ import '../app/assets/styles/globals.sass'
 import {Provider} from "react-redux";
 import {store, wrapper} from "../app/redux/store";
 
-const MyApp = ({Component, ...rest}: AppProps) => {
-    const {store, props} = wrapper.useWrappedStore(rest)
+const App = ({Component, pageProps}: AppProps) => {
     return (
         <Provider store={store}>
-            <Component {...props.pageProps} />
+            <Component {...pageProps} />
         </Provider>
     )
 }
 
-export default MyApp
+export default wrapper.withRedux(App)
