@@ -16,6 +16,7 @@
     "js-cookie": "^3.0.1",
     "nestjs": "^0.0.1",
     "next": "^13.2.3",
+    "next-redux-wrapper": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.34.2",
