@@ -1,7 +1,8 @@
-import type {NextPage} from 'next'
+import type {GetServerSideProps, NextPage} from 'next'
 import Home from '@/components/sreens/home/Home'
 import {IHome} from '@/interfaces/IHome.interface'
 import {IMovie} from '@/interfaces/IMovie.interface'
+import {wrapper} from "../app/redux/store";
 
 const HomePage: NextPage<IHome> = (props) => {
     const moviesMock: IMovie[] = [
@@ -25,5 +26,9 @@ const HomePage: NextPage<IHome> = (props) => {
     return <Home newMovies={moviesMock}/>
 }
 
-
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
+    (store) => async ctx => {
+        return {props: {}}
+    }
+)
 export default HomePage
