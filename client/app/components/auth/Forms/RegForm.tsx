@@ -6,10 +6,10 @@ import React, {memo, useState} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
 import {UserApi} from "@/utils/api/interceptor";
-import {setCookie} from "cookies-next";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
 import {useDispatch} from "react-redux";
 import {saveData} from "../../../redux/slices/user.slice";
+import {setCookie} from "nookies";
 
 const RegForm = () => {
     const [error, setError] = useState<string>('')
@@ -22,7 +22,10 @@ const RegForm = () => {
     const handleClick = async (data: any) => {
         try {
             const res = await UserApi.register(data)
-            setCookie('authToken', res.token, {maxAge: 14 * 60 * 60 * 24});
+            setCookie(null, 'authToken', res.token, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+            })
             dispatch(saveData(data))
             console.log(res)
         } catch (err: any) {

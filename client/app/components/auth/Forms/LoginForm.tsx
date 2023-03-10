@@ -9,6 +9,7 @@ import {UserApi} from "@/utils/api/interceptor";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
 import {saveData} from "../../../redux/slices/user.slice";
 import {useDispatch} from "react-redux";
+import {setCookie} from "nookies";
 
 const LoginForm = () => {
     const [error, setError] = useState<string>('')
@@ -20,6 +21,10 @@ const LoginForm = () => {
     const handleClick = async (data: any) => {
         try {
             const res = await UserApi.login(data)
+            setCookie(null, 'authToken', res.token, {
+                maxAge: 30 * 24 * 60 * 60,
+                path: '/',
+            })
             dispatch(saveData(data))
             console.log(res)
         } catch (err: any) {
