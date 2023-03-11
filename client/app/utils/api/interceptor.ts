@@ -2,6 +2,7 @@ import axios from 'axios';
 import {LoginFormType, RegisterFormType} from "@/interfaces/IAuthFields.interface";
 import {ReviewType} from "@/interfaces/IReview.interface";
 import {MovieType} from "@/interfaces/IMovie.interface";
+import header from "@/ui/header/Header";
 
 export const instance = axios.create({
     baseURL: 'http://localhost:7777/',
@@ -14,6 +15,14 @@ export const UserApi = {
     },
     async login(dto: LoginFormType) {
         const {data} = await instance.post('auth/login', dto)
+        return data
+    },
+    async getMe(authToken: string) {
+        const {data} = await instance.get('auth/me', {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }
+        })
         return data
     }
 }

@@ -24,7 +24,7 @@ export class AuthController {
 
     @UseGuards(AuthGuard('jwt'))
     @Get('me')
-    getProfile(@Request() req) {
+    async getProfile(@Request() req) {
         return this.userService.findOneById(req.user.id);
     }
 }

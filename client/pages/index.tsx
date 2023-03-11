@@ -3,6 +3,8 @@ import Home from '@/components/sreens/home/Home'
 import {IHome} from '@/interfaces/IHome.interface'
 import {IMovie} from '@/interfaces/IMovie.interface'
 import {wrapper} from "../app/redux/store";
+import {parseCookies} from "nookies";
+import {UserApi} from "@/utils/api/interceptor";
 
 const HomePage: NextPage<IHome> = (props) => {
     const moviesMock: IMovie[] = [
@@ -27,8 +29,15 @@ const HomePage: NextPage<IHome> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(
-    (store) => async ctx => {
-        return {props: {}}
+    (store) => async (ctx) => {
+        try {
+            const {authToken} = parseCookies(ctx)
+            const userData = await UserApi.getMe(authToken)
+            return {props: {}}
+        } catch (err) {
+            console.warn(err)
+            return {props: {}}
+        }
     }
 )
 export default HomePage
