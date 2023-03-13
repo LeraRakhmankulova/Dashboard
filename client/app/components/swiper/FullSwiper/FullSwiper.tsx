@@ -20,8 +20,8 @@ const FullSwiper: FC<any> = () => {
                 modules={[Navigation, Autoplay]}
             >
                 {filmsMock.map((el, idx) =>
-                    <SwiperSlide>
-                        <FullCoverMovie data={el} key={idx}/>
+                    <SwiperSlide key={idx}>
+                        <FullCoverMovie data={el}/>
                     </SwiperSlide>)}
             </SwiperLayout>
         </div>

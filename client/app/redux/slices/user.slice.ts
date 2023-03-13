@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {HYDRATE} from "next-redux-wrapper";
 
 
 export const userSlice = createSlice({
@@ -11,6 +12,14 @@ export const userSlice = createSlice({
                 state.data = action.payload;
             }
         },
+        extraReducers: {
+            [HYDRATE]: (state, action)=> {
+                return{
+                    ...state,
+                    ...action.payload.user
+                }
+            }
+        }
     })
 ;
 
