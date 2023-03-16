@@ -8,7 +8,7 @@ export const instance = axios.create({
     baseURL: 'http://localhost:7777/',
 })
 
-export const UserApi = {
+export const UserApi = () => ({
     async register(dto: RegisterFormType) {
         const {data} = await instance.post('auth/register', dto)
         return data
@@ -25,7 +25,7 @@ export const UserApi = {
         })
         return data
     }
-}
+})
 
 export const AdminApi = {
     async getAll() {
