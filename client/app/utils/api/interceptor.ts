@@ -2,7 +2,6 @@ import axios from 'axios';
 import {LoginFormType, RegisterFormType} from "@/interfaces/IAuthFields.interface";
 import {ReviewType} from "@/interfaces/IReview.interface";
 import {MovieType} from "@/interfaces/IMovie.interface";
-import header from "@/ui/header/Header";
 
 export const instance = axios.create({
     baseURL: 'http://localhost:7777/',
