@@ -1,9 +1,11 @@
-import {Injectable} from '@nestjs/common';
+import {BadRequestException, Injectable} from '@nestjs/common';
 import {UserService} from "../user/user.service";
 import {JwtService} from "@nestjs/jwt";
 import {UserEntity} from "../user/entities/user.entity";
 import {CreateUserDto} from "../user/dto/create-user.dto";
 import {compare, genSalt, hash} from "bcrypt";
+import {comparePasswords} from "./strategies/bcrypt";
+import {InvalidClassException} from "@nestjs/core/errors/exceptions/invalid-class.exception";
 
 @Injectable()
 export class AuthService {
@@ -12,13 +14,13 @@ export class AuthService {
     }
 
     async validateUser(email: string, password: string): Promise<any> {
-        const salt = await genSalt(10);
         const user = await this.userService.findOneByEmail(email);
-        const hashPass = await hash(password, salt);
-        const isMatch = await compare(password, hashPass);
-        if (user && isMatch) {
+        const isMatch = comparePasswords(password, user.password)
+        if (user) {
             const {password, ...result} = user;
-            return result;
+            if (isMatch)
+                return result;
+            throw new BadRequestException("Password mismatch")
         }
         return null;
     }
