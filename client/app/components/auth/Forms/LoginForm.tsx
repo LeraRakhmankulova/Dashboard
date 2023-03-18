@@ -5,11 +5,11 @@ import InputField from "@/ui/InputField/InputField";
 import React, {memo, useState} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
-import {UserApi} from "@/utils/api/movie.api";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
 import {saveData} from "../../../redux/slices/user.slice";
 import {useDispatch} from "react-redux";
 import {setCookie} from "nookies";
+import {Api} from "@/utils/api/interceptor";
 
 const LoginForm = () => {
     const [error, setError] = useState<string>('')
@@ -20,7 +20,7 @@ const LoginForm = () => {
     })
     const handleClick = async (data: any) => {
         try {
-            const res = await UserApi.login(data)
+            const res = await Api().user.login(data)
             setCookie(null, 'authToken', res.token, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: '/',

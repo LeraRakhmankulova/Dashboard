@@ -5,11 +5,11 @@ import InputField from "@/ui/InputField/InputField";
 import React, {memo, useState} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
-import {UserApi} from "@/utils/api/movie.api";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
 import {useDispatch} from "react-redux";
 import {saveData} from "../../../redux/slices/user.slice";
 import {setCookie} from "nookies";
+import {Api} from "@/utils/api/interceptor";
 
 const RegForm = () => {
     const [error, setError] = useState<string>('')
@@ -21,7 +21,7 @@ const RegForm = () => {
 
     const handleClick = async (data: any) => {
         try {
-            const res = await UserApi.register(data)
+            const res = await Api().user.register(data)
             setCookie(null, 'authToken', res.token, {
                 maxAge: 30 * 24 * 60 * 60,
                 path: '/',

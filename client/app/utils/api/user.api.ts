@@ -1,6 +1,5 @@
 import {AxiosInstance} from 'axios';
-
-import {LoginFormType, RegisterFormType} from "../../interfaces/IAuthFields.interface";
+import {LoginFormType, RegisterFormType} from "@/interfaces/IAuthFields.interface";
 
 export const UserApi = (instance: AxiosInstance) => ({
     async register(dto: RegisterFormType) {
@@ -11,12 +10,8 @@ export const UserApi = (instance: AxiosInstance) => ({
         const {data} = await instance.post('auth/login', dto)
         return data
     },
-    async getMe(authToken: string) {
-        const {data} = await instance.get('auth/me', {
-            headers: {
-                Authorization: `Bearer ${authToken}`
-            }
-        })
+    async getMe() {
+        const {data} = await instance.get('auth/me')
         return data
     }
 })
