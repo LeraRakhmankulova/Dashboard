@@ -5,7 +5,7 @@ import InputField from "@/ui/InputField/InputField";
 import React, {memo, useState} from "react";
 import Button from "@/ui/Button/Button";
 import style from "@/components/auth/Auth.module.sass";
-import {UserApi} from "@/utils/api/interceptor";
+import {UserApi} from "@/utils/api/movie.api";
 import ErrorAlert from "@/components/auth/Alert/ErrorAlert";
 import {saveData} from "../../../redux/slices/user.slice";
 import {useDispatch} from "react-redux";

@@ -2,10 +2,6 @@ import type {GetServerSideProps, NextPage} from 'next'
 import Home from '@/components/sreens/home/Home'
 import {IHome} from '@/interfaces/IHome.interface'
 import {IMovie} from '@/interfaces/IMovie.interface'
-import {wrapper} from "../app/redux/store";
-import {parseCookies} from "nookies";
-import {UserApi} from "@/utils/api/interceptor";
-import {saveData} from "../app/redux/slices/user.slice";
 
 const HomePage: NextPage<IHome> = (props) => {
     const moviesMock: IMovie[] = [
