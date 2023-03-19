@@ -17,11 +17,13 @@ App.getInitialProps = wrapper.getInitialAppProps(
             const userData = await Api(ctx).user.getMe()
             store.dispatch(saveData(userData))
         } catch (err) {
-            if(ctx.asPath === '/write'){
-                ctx.res?.writeHead(302, {
+            if(ctx.asPath === '/profile'){
+                // @ts-ignore
+                ctx.res.writeHead(302, {
                     Location: '/404'
                 })
-                ctx.res?.end()
+                // @ts-ignore
+                ctx.res.end()
             }
             console.warn(err)
         }
