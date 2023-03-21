@@ -1,9 +1,28 @@
 .input
+  position: relative
+
   > textarea
     border-radius: 5px
-    padding: 10px 15px 5px
+    padding: 10px 50px 5px 15px
     width: 100%
     overflow: hidden
     outline: none
     resize: none
+
+  > span
+    width: 40px
+    height: 40px
+    position: absolute
+    top: 0
+    z-index: 3
+    right: 0
+    cursor: pointer
+    display: flex
+
+    > img
+      margin: auto
+      justify-content: center
+      align-items: center
+      border-radius: 0
+
 

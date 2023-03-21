@@ -1,10 +1,7 @@
 import Image from 'next/image'
-import {useRouter} from 'next/router'
 import Layout from '@/components/ui/Layout/Layout'
 import style from './Movie.module.sass'
-import movieMock from '../../../assets/images/mvMock.svg';
 import mockCover from '../../../../public/card-img.png'
-import {url} from "inspector";
 import Reviews from "@/components/sreens/movie/Reviews/Reviews";
 
 const Movie = () => {
@@ -25,7 +22,7 @@ const Movie = () => {
                 }}>
                     <div className={style.movie__info}>
                         <div className={style.movie__full}>
-                            <Image src={mockCover}/>
+                            <Image src={mockCover} alt={movie.name}/>
                             <div className={style.movie__block}>
                                 <h1>{movie?.name}</h1>
                                 <h2>About movie:</h2>
