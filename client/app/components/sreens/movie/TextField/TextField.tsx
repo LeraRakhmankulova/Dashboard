@@ -12,7 +12,7 @@ const TextField = () => {
                 style={!active ? {height: '45px'} : {height: '100px', boxShadow: '0 0 30px rgb(0, 0, 0)'}}
                 onClick={() => setActive(true)}/>
 
-            <span><Image src={send} alt="send"/></span>
+            <button><Image src={send} alt="send"/></button>
         </div>
     )
 }
